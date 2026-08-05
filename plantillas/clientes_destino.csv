@@ -1,0 +1,3 @@
+ID,Destinatario,Contacto,Calle,NumExt,NumInt,Colonia,Municipio,Localidad,Referencia,Domicilio,Ciudad,Estado,RFC,Telefono,CodigoPostal,Cometarios,Pais,NumRegIdTrib
+123456,PRBDest,PRBCont,PRBCalle,1,2,3755,120,10,PRBRef,PRBDom,Zapopan,JAL,rfc123,3318333,45130,comentario,MEX,no aplica
+654321,PRBDest2,PRBCont2,pRBCalle2,3,4,4398,120,10,PRBRef2,PRBDom2,Zapopan,JAL,RFC321,3352543,45140,CO 123123,MEX,APLICA

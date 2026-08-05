@@ -21,4 +21,10 @@ export const config = {
 
   platformName: process.env.PLATFORM_NAME ?? "nuestra plataforma",
   supportContact: process.env.SUPPORT_CONTACT ?? "",
+
+  // URL pública donde corre este servidor (ngrok en pruebas, tu dominio en
+  // producción). Necesaria para poder enviar plantillas descargables por
+  // WhatsApp; si no está configurada, esa función avisa al usuario en vez de
+  // fallar en silencio.
+  publicBaseUrl: process.env.PUBLIC_BASE_URL?.replace(/\/+$/, ""),
 };

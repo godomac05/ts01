@@ -29,6 +29,20 @@ export async function sendTextMessage(to: string, text: string): Promise<void> {
   });
 }
 
+export async function sendDocumentMessage(
+  to: string,
+  link: string,
+  filename: string,
+  caption?: string,
+): Promise<void> {
+  await callGraphApi({
+    messaging_product: "whatsapp",
+    to,
+    type: "document",
+    document: { link, filename, caption },
+  });
+}
+
 export async function markMessageAsRead(messageId: string): Promise<void> {
   await callGraphApi({
     messaging_product: "whatsapp",

@@ -15,6 +15,7 @@ Meta WhatsApp Cloud API  ──webhook──▶  src/server.ts (Express)
                                           ├─ src/whatsapp/        (enviar/recibir mensajes)
                                           ├─ src/session/store.ts (historial por número)
                                           ├─ src/knowledge/       (carga + búsqueda de la base de conocimiento)
+                                          ├─ src/templates/       (detecta y envía plantillas descargables)
                                           └─ src/ai/assistant.ts  (llama a Claude con el contexto relevante)
 ```
 
@@ -27,6 +28,9 @@ Meta WhatsApp Cloud API  ──webhook──▶  src/server.ts (Express)
   vectorial) para inyectar solo el contexto relevante en cada respuesta.
 - **Historial de conversación**: en memoria + respaldo simple en
   `data/conversations.json`, por número de teléfono.
+- **Plantillas descargables**: archivos en `plantillas/` (Excel/CSV) que los
+  usuarios pueden pedir por WhatsApp (ej. "plantilla de rutas") y reciben
+  directo como documento adjunto. Ver `plantillas/README.md`.
 
 ## Requisitos
 
@@ -61,6 +65,9 @@ Meta WhatsApp Cloud API  ──webhook──▶  src/server.ts (Express)
 
 3. Agrega o reemplaza el contenido en `knowledge/` con la documentación real
    de tu plataforma (ver `knowledge/README.md`).
+4. Si vas a usar las plantillas descargables (`plantillas/`), configura
+   `PUBLIC_BASE_URL` con la URL pública de tu servidor (ver
+   `plantillas/README.md` para más detalle).
 
 ## Configurar la app de WhatsApp en Meta for Developers
 
