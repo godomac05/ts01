@@ -51,6 +51,105 @@ obligatorio declarar:
   materiales peligrosos (permisos específicos, señalización del vehículo,
   etc.), que va más allá del propio CFDI.
 
+## Catálogo de nomenclatura de configuraciones vehiculares (SCT)
+
+La "configuración vehicular" que se declara en Carta Porte sigue la
+nomenclatura oficial de la SCT (Secretaría de Infraestructura, Comunicaciones
+y Transportes). La clase general de vehículo se identifica con una letra:
+
+| Clase de vehículo o configuración      | Nomenclatura   |
+| --------------------------------------- | -------------- |
+| Autobús                                  | B              |
+| Camión unitario                          | C              |
+| Tractocamión                             | T              |
+| Convertidor                              | D              |
+| Camión remolque                          | C-R            |
+| Tractocamión articulado                  | T-S            |
+| Tractocamión doblemente articulado       | T-S-R y T-S-S  |
+
+Dentro de cada clase, la nomenclatura específica indica el número de ejes y
+llantas del vehículo:
+
+**Camión unitario (C)**
+
+| Nomenclatura | Número de ejes | Número de llantas |
+| ------------ | --------------- | ------------------ |
+| C2           | 2               | 6                   |
+| C3           | 3               | 8–10                |
+
+**Camión-remolque (C-R)**
+
+| Nomenclatura | Número de ejes | Número de llantas |
+| ------------ | --------------- | ------------------ |
+| C2-R2        | 4               | 14                  |
+| C3-R2        | 5               | 18                  |
+| C2-R3        | 5               | 18                  |
+| C3-R3        | 6               | 22                  |
+
+**Tractocamión articulado (T-S)**
+
+| Nomenclatura | Número de ejes | Número de llantas |
+| ------------ | --------------- | ------------------ |
+| T2-S1        | 3               | 10                  |
+| T2-S2        | 4               | 14                  |
+| T2-S3        | 5               | 18                  |
+| T3-S1        | 4               | 14                  |
+| T3-S2        | 5               | 18                  |
+
+(El catálogo completo de la SCT incluye más combinaciones, como
+tractocamiones doblemente articulados T-S-R y T-S-S con hasta 9 ejes.)
+
+## Peso bruto vehicular máximo autorizado (NOM-012-SCT-2)
+
+La NOM-012-SCT-2 establece el peso bruto vehicular máximo (en toneladas)
+permitido según la configuración del vehículo y el tipo de camino por el que
+circula (columnas **ET y A**, **B**, **C**, **D**, que corresponden a la
+clasificación oficial de caminos según su capacidad estructural — de mayor a
+menor resistencia).
+
+**Autobuses**
+
+| Vehículo | Ejes | Llantas | ET y A | B    | C    | D    |
+| -------- | ---- | ------- | ------ | ---- | ---- | ---- |
+| B2       | 2    | 6       | 19.0   | 16.5 | 14.5 | 13.0 |
+| B3       | 3    | 8       | 24.0   | 19.0 | 17.0 | 16.0 |
+| B3       | 3    | 10      | 27.5   | 23.0 | 20.0 | 18.5 |
+| B4       | 4    | 10      | 30.5   | 25.0 | 22.5 | 21.0 |
+
+**Camiones y tractocamiones (carga)**
+
+| Configuración | Ejes | Llantas | ET y A | B    | C    | D    |
+| ------------- | ---- | ------- | ------ | ---- | ---- | ---- |
+| C2            | 2    | 6       | 19.0   | 16.5 | 14.5 | 13.0 |
+| C3            | 3    | 8       | 24.0   | 19.0 | 17.0 | 16.0 |
+| C3            | 3    | 10      | 27.5   | 23.0 | 20.0 | 18.5 |
+| C2-R2         | 4    | 14      | 37.5   | 35.5 | NA   | NA   |
+| C3-R2         | 5    | 18      | 44.5   | 42.0 | NA   | NA   |
+| C2-R3         | 5    | 18      | 44.5   | 41.0 | NA   | NA   |
+| C3-R3         | 6    | 22      | 51.5   | 47.5 | NA   | NA   |
+| T2-S1         | 3    | 10      | 30.0   | 26.0 | 22.5 | NA   |
+| T2-S2         | 4    | 14      | 38.0   | 31.5 | 28.0 | NA   |
+| T2-S3         | 5    | 18      | 45.5   | 39.0 | 34.5 | NA   |
+| T3-S1         | 4    | 14      | 38.5   | 32.5 | 28.0 | NA   |
+| T3-S2         | 5    | 18      | 46.5   | 38.0 | 33.5 | NA   |
+| T3-S3         | 6    | 22      | 54.0   | 45.5 | 40.0 | NA   |
+| T2-S1-R2      | 5    | 18      | 47.5   | NA   | NA   | NA   |
+| T2-S1-R3      | 6    | 22      | 54.5   | NA   | NA   | NA   |
+| T2-S2-R2      | 6    | 22      | 54.5   | NA   | NA   | NA   |
+| T3-S1-R2      | 6    | 22      | 54.5   | NA   | NA   | NA   |
+| T3-S1-R3      | 7    | 26      | 60.5   | NA   | NA   | NA   |
+| T3-S2-R2      | 7    | 26      | 60.5   | NA   | NA   | NA   |
+| T3-S2-R3      | 8    | 30      | 63.0   | NA   | NA   | NA   |
+| T3-S2-R4      | 9    | 34      | 66.5   | NA   | NA   | NA   |
+| T2-S2-S2      | 6    | 22      | 51.5   | NA   | NA   | NA   |
+| T3-S2-S2      | 7    | 26      | 58.5   | NA   | NA   | NA   |
+| T3-S3-S2      | 8    | 30      | 60.0   | NA   | NA   | NA   |
+
+`NA` significa que esa configuración no está autorizada para circular en ese
+tipo de camino. Esta tabla es de referencia general de la norma — el peso
+real autorizado para una unidad específica también depende de su tarjeta de
+circulación y del permiso SCT vigente para esa unidad en particular.
+
 ## Errores frecuentes específicos de autotransporte
 
 - Usar una clave de configuración vehicular que no corresponde al tipo de
