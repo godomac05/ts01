@@ -40,14 +40,31 @@ el archivo en vez de fallar en silencio.
 - `clientes.xlsx`: alta/actualización masiva de clientes.
 - `clientes_destino.csv`: destinatarios/domicilios de entrega de tus clientes.
 - `embalaje.csv`: catálogo de mercancías y su embalaje.
+- `embalaje_viaje_factura.csv`: embalaje de mercancías asociado a un viaje y
+  su factura (formato distinto al de `embalaje.csv`, mismas columnas base).
 - `rutas.csv`: catálogo de rutas y distancias.
 - `unidades.csv`: catálogo de unidades/vehículos de la flota.
+- `importacion_masiva.csv`: importación masiva de viajes/embarques completos
+  (cliente, ruta, unidad, operador, mercancía).
+- `cargas_combustible.csv`: historial de cargas de combustible por unidad.
+- `cargos_unidades.csv`: cargos/gastos asociados a una unidad.
+- `ccpt.csv`: remitente, destinatario y mercancías para el Complemento Carta
+  Porte.
 
 ## ⚠️ Nota sobre privacidad de datos
 
-`clientes.xlsx` se dejó **intencionalmente** con datos reales de clientes
-(razón social, RFC, domicilio) por decisión explícita del dueño de la
-plataforma — cualquier persona que le escriba al bot pidiendo esta plantilla
-puede descargar esa información. Si esto cambia de opinión en el futuro,
-reemplaza el archivo con uno que solo tenga la fila de encabezados (o datos
-de ejemplo ficticios, como ya tienen `clientes_destino.csv` y `unidades.csv`).
+Los siguientes archivos se dejaron **intencionalmente** con datos reales (no
+solo de ejemplo), por decisión explícita del dueño de la plataforma —
+cualquier persona que le escriba al bot pidiendo estas plantillas puede
+descargar esa información:
+
+- `clientes.xlsx`: razón social, RFC y domicilio de clientes reales.
+- `ccpt.csv`: razón social y RFC de remitente/destinatario reales (Cementos
+  Moctezuma, Benol Concretos).
+- `cargas_combustible.csv`: nombre completo de una persona real como operador
+  de ejemplo.
+
+Si esto cambia de opinión en el futuro, reemplaza esos archivos con una
+versión que solo tenga la fila de encabezados (o datos de ejemplo ficticios,
+como ya tienen `clientes_destino.csv`, `unidades.csv`, `cargos_unidades.csv`
+e `importacion_masiva.csv`).
