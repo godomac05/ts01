@@ -20,7 +20,6 @@ export const config = {
   whatsappApiVersion: process.env.WHATSAPP_API_VERSION ?? "v21.0",
 
   platformName: process.env.PLATFORM_NAME ?? "nuestra plataforma",
-  supportContact: process.env.SUPPORT_CONTACT ?? "",
 
   // URL pública donde corre este servidor (ngrok en pruebas, tu dominio en
   // producción). Necesaria para poder enviar plantillas descargables por

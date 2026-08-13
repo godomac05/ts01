@@ -61,7 +61,9 @@ Meta WhatsApp Cloud API  ──webhook──▶  src/server.ts (Express)
      WhatsApp Business (no es el número telefónico).
    - `WHATSAPP_VERIFY_TOKEN`: un token que tú inventas, para la verificación
      del webhook (debe coincidir con el que configures en Meta).
-   - `PLATFORM_NAME` / `SUPPORT_CONTACT`: se usan en el prompt del bot.
+   - `PLATFORM_NAME`: se usa en el prompt del bot. Cuando el bot no puede
+     resolver algo, recomienda contactar al "grupo de soporte
+     correspondiente" del usuario (sin dar un correo o contacto fijo).
 
 3. Agrega o reemplaza el contenido en `knowledge/` con la documentación real
    de tu plataforma (ver `knowledge/README.md`).
