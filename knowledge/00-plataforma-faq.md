@@ -1,4 +1,4 @@
-# Preguntas frecuentes de la plataforma (TractoSoft)
+# Preguntas frecuentes de la plataforma (Tractosoft)
 
 ## Bloqueo o liberación de usuario
 
@@ -27,13 +27,13 @@ proceso es:
 
 1. El **área contable del cliente** debe tramitar los nuevos CSD directamente
    ante el SAT.
-2. El cliente debe enviar a los correos de administración de TractoSoft:
+2. El cliente debe enviar a los correos de administración de Tractosoft:
    - Los archivos `.cer` y `.key`.
    - La contraseña de los CSD.
    - FIEL vigente.
    - Logotipo.
    - Constancia de Situación Fiscal actualizada.
-3. TractoSoft actualiza estos datos en la plataforma.
+3. Tractosoft actualiza estos datos en la plataforma.
 
 Si un usuario pregunta por este proceso, indícale estos pasos y que contacte
 a soporte para que le confirmen los correos exactos a los que debe enviar la
@@ -92,7 +92,7 @@ que puede solicitarla a través de soporte.
 ## Pagos de facturación pendientes
 
 Se envían avisos recordando la fecha límite de pago de la factura mensual de
-TractoSoft, para evitar la suspensión del servicio de timbrado. Si un
+Tractosoft, para evitar la suspensión del servicio de timbrado. Si un
 usuario pregunta por un aviso de pago pendiente, confírmale que es un
 recordatorio legítimo y que, si tiene dudas sobre el monto o la fecha exacta,
 contacte a soporte o al área de facturación.
