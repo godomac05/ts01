@@ -29,6 +29,12 @@ para inyectar solo los fragmentos más útiles en cada respuesta.
 - `22-carta-porte-otros-medios.md`: transporte marítimo, aéreo y ferroviario.
 - `23-carta-porte-errores-comunes.md`: errores de validación frecuentes.
 - `30-complemento-pago-rep.md`: Complemento de Pago / REP (CFDI tipo P).
+- `50-catalogos-cfdi-generales.md`: catálogos generales del SAT para CFDI 4.0
+  (tipo de comprobante, uso CFDI, régimen fiscal, forma/método de pago,
+  moneda, tipo de relación, exportación, objeto de impuesto, impuestos).
+- `51-catalogos-carta-porte.md`: catálogos específicos de Carta Porte (tipo
+  de permiso SCT, configuración vehicular, subtipo de remolque, embalaje,
+  unidades y claves de producto/servicio más usadas en transporte de carga).
 
 ## Nota importante sobre vigencia
 
