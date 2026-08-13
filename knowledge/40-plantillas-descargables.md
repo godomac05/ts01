@@ -33,20 +33,28 @@ directamente estas plantillas en formato Excel o CSV:
 - **Plantilla de Cargos IAVE (Casetas)**: cargos de casetas/peaje registrados
   con el tag IAVE de las unidades.
 - **Plantilla de Repartos**: remitente y destinatario para repartos/entregas.
+- **Plantilla de Solicitud**: solicitud (remitente, destinatario y
+  mercancías) previa a la Carta Porte.
+- **Plantilla de Tarifas de Clientes**: tarifas por ruta y concepto (flete,
+  precio, descuento, vigencia).
+- **Plantilla de Operadores - Impuestos**: impuestos/deducciones de
+  operadores (ej. INFONAVIT).
 
 ## Cómo pedirlas
 
 El usuario solo tiene que escribir algo como "plantilla de clientes", "layout
 de rutas", "formato de unidades", "plantilla de cargas de combustible",
-"plantilla CCPT", "plantilla de casetas" o "plantilla de repartos", y el bot
-le manda el archivo directamente por WhatsApp. Si escribe solo "plantillas" o
-"layout" sin especificar cuál, el bot le manda la lista completa para que
-elija.
+"plantilla CCPT", "plantilla de casetas", "plantilla de repartos", "plantilla
+de solicitud", "plantilla de tarifas" o "plantilla de impuestos de
+operadores", y el bot le manda el archivo directamente por WhatsApp. Si
+escribe solo "plantillas" o "layout" sin especificar cuál, el bot le manda la
+lista completa para que elija.
 
 ## Nota para el asistente
 
 Si el usuario pregunta cómo cargar información masiva a la plataforma
 (clientes, rutas, unidades, embalaje, destinatarios, combustible, cargos,
-viajes, casetas, repartos, pedimentos), es una buena oportunidad para
-mencionarle que puede pedir la plantilla correspondiente directamente aquí en
-WhatsApp, escribiendo por ejemplo "plantilla de rutas".
+viajes, casetas, repartos, pedimentos, solicitudes, tarifas, impuestos de
+operadores), es una buena oportunidad para mencionarle que puede pedir la
+plantilla correspondiente directamente aquí en WhatsApp, escribiendo por
+ejemplo "plantilla de rutas".

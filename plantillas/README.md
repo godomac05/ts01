@@ -55,6 +55,12 @@ el archivo en vez de fallar en silencio.
 - `facturas_pedimento.csv`: facturas asociadas a un pedimento aduanal.
 - `iave.csv`: cargos de casetas/peaje registrados con el tag IAVE.
 - `repartos.csv`: remitente y destinatario para repartos/entregas.
+- `solicitud.csv`: solicitud (remitente, destinatario y mercancías) previa a
+  la Carta Porte.
+- `tarifas_clientes.csv`: tarifas por ruta y concepto (flete, precio,
+  descuento, vigencia).
+- `operadores_impuestos.csv`: impuestos/deducciones de operadores (ej.
+  INFONAVIT).
 
 ## ⚠️ Nota sobre privacidad de datos
 
@@ -71,6 +77,8 @@ descargar esa información:
 - `repartos.csv`: una fila con razón social y RFC reales de una empresa
   (Henkel Capital) y, más sensible aún, el **nombre completo y RFC personal**
   de una persona física real.
+- `solicitud.csv`: razón social y RFC de remitente/destinatario reales
+  (los mismos de `ccpt.csv`: Cementos Moctezuma, Benol Concretos).
 
 Si esto cambia de opinión en el futuro, reemplaza esos archivos con una
 versión que solo tenga la fila de encabezados (o datos de ejemplo ficticios,

@@ -137,4 +137,28 @@ export const TEMPLATES: TemplateDefinition[] = [
     description: "Formato con remitente y destinatario para repartos/entregas.",
     keywords: ["reparto", "repartos", "entrega", "entregas"],
   },
+  {
+    key: "solicitud",
+    filename: "solicitud.csv",
+    displayName: "Plantilla de Solicitud",
+    description:
+      "Formato de solicitud (remitente, destinatario y mercancías) previo a la Carta Porte.",
+    keywords: ["solicitud", "solicitudes"],
+  },
+  {
+    key: "tarifas_clientes",
+    filename: "tarifas_clientes.csv",
+    displayName: "Plantilla de Tarifas de Clientes",
+    description:
+      "Formato para registrar tarifas por ruta y concepto (flete, precio unitario, descuento, vigencia).",
+    keywords: ["tarifa", "tarifas"],
+  },
+  {
+    key: "operadores_impuestos",
+    filename: "operadores_impuestos.csv",
+    displayName: "Plantilla de Operadores - Impuestos",
+    description:
+      "Formato para registrar impuestos/deducciones de operadores (ej. INFONAVIT).",
+    keywords: ["impuesto", "impuestos", "infonavit", "deduccion", "deducciones"],
+  },
 ];
