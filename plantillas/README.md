@@ -1,8 +1,9 @@
 # Plantillas descargables por WhatsApp
 
-Esta carpeta contiene los archivos (Excel/CSV) que los clientes pueden pedir y
-recibir directo por WhatsApp — por ejemplo, si alguien escribe "¿me pasas la
-plantilla de rutas?", el bot le manda el archivo `rutas.csv` como documento.
+Esta carpeta contiene los archivos (Excel/CSV, y también imágenes de
+formularios) que los clientes pueden pedir y recibir directo por WhatsApp —
+por ejemplo, si alguien escribe "¿me pasas la plantilla de rutas?", el bot le
+manda el archivo `rutas.csv` como documento.
 
 ## Cómo funciona
 
@@ -11,7 +12,13 @@ plantilla de rutas?", el bot le manda el archivo `rutas.csv` como documento.
 2. Busca coincidencia contra las `keywords` definidas en
    `src/templates/registry.ts`.
 3. Si encuentra una sola coincidencia, manda el archivo correspondiente de
-   esta carpeta como documento de WhatsApp.
+   esta carpeta por WhatsApp:
+   - Si el archivo es una imagen (`.jpg`, `.jpeg`, `.png`, `.webp`), se manda
+     como **imagen** (se ve como foto/vista previa en el chat).
+   - Cualquier otro tipo (`.xlsx`, `.csv`, `.pdf`, etc.) se manda como
+     **documento** (con nombre de archivo, para descargar).
+   Esto se decide automáticamente por la extensión del archivo — no hace
+   falta configurarlo (`isImageTemplate` en `src/templates/registry.ts`).
 4. Si no logra identificar cuál exactamente (o el usuario solo dice
    "plantillas" sin especificar), manda la lista completa para que elija.
 

@@ -7,12 +7,13 @@ import { generateReply } from "./ai/assistant";
 import {
   markMessageAsRead,
   sendDocumentMessage,
+  sendImageMessage,
   sendTextMessage,
 } from "./whatsapp/client";
 import { parseIncomingTextMessages, verifyWebhookChallenge } from "./whatsapp/webhook";
 import { appendTurns, getHistory } from "./session/store";
 import { detectTemplateRequest, TemplateDetection } from "./templates/detector";
-import { TEMPLATES } from "./templates/registry";
+import { isImageTemplate, TEMPLATES } from "./templates/registry";
 
 const app = express();
 app.use(express.json());
@@ -115,7 +116,11 @@ async function sendTemplateResponse(
   }
 
   const link = `${config.publicBaseUrl}/plantillas/${template.filename}`;
-  await sendDocumentMessage(to, link, template.filename, template.description);
+  if (isImageTemplate(template)) {
+    await sendImageMessage(to, link, template.description);
+  } else {
+    await sendDocumentMessage(to, link, template.filename, template.description);
+  }
   return `[Se envió el archivo: ${template.displayName}]`;
 }
 

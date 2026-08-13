@@ -7,6 +7,14 @@ export interface TemplateDefinition {
   keywords: string[];
 }
 
+const IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
+
+/** WhatsApp maneja imágenes distinto a documentos (type: "image" vs "document"). */
+export function isImageTemplate(template: TemplateDefinition): boolean {
+  const lower = template.filename.toLowerCase();
+  return IMAGE_EXTENSIONS.some((ext) => lower.endsWith(ext));
+}
+
 export const TEMPLATES: TemplateDefinition[] = [
   {
     key: "clientes",

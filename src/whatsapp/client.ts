@@ -43,6 +43,19 @@ export async function sendDocumentMessage(
   });
 }
 
+export async function sendImageMessage(
+  to: string,
+  link: string,
+  caption?: string,
+): Promise<void> {
+  await callGraphApi({
+    messaging_product: "whatsapp",
+    to,
+    type: "image",
+    image: { link, caption },
+  });
+}
+
 export async function markMessageAsRead(messageId: string): Promise<void> {
   await callGraphApi({
     messaging_product: "whatsapp",
