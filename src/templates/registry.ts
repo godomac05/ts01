@@ -105,4 +105,36 @@ export const TEMPLATES: TemplateDefinition[] = [
     // "carta porte" en general (el tema principal de este bot).
     keywords: ["ccpt"],
   },
+  {
+    key: "embalaje_cotizaciones",
+    filename: "embalaje_cotizaciones.csv",
+    displayName: "Plantilla de Embalaje para Cotizaciones",
+    description:
+      "Formato para registrar dimensiones y precio del embalaje usado en cotizaciones.",
+    // Sin "embalaje" a propósito, por la misma razón que embalaje_viaje_factura.
+    keywords: ["cotizacion", "cotizaciones"],
+  },
+  {
+    key: "facturas_pedimento",
+    filename: "facturas_pedimento.csv",
+    displayName: "Plantilla de Facturas de Pedimento",
+    description:
+      "Formato para registrar facturas asociadas a un pedimento aduanal (monto, IVA, retención, total).",
+    keywords: ["pedimento", "pedimentos", "factura", "facturas"],
+  },
+  {
+    key: "iave",
+    filename: "iave.csv",
+    displayName: "Plantilla de Cargos IAVE (Casetas)",
+    description:
+      "Formato para importar los cargos de casetas/peaje registrados con el tag IAVE de tus unidades.",
+    keywords: ["iave", "caseta", "casetas", "peaje", "peajes"],
+  },
+  {
+    key: "repartos",
+    filename: "repartos.csv",
+    displayName: "Plantilla de Repartos",
+    description: "Formato con remitente y destinatario para repartos/entregas.",
+    keywords: ["reparto", "repartos", "entrega", "entregas"],
+  },
 ];

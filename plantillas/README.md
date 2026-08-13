@@ -50,6 +50,11 @@ el archivo en vez de fallar en silencio.
 - `cargos_unidades.csv`: cargos/gastos asociados a una unidad.
 - `ccpt.csv`: remitente, destinatario y mercancías para el Complemento Carta
   Porte.
+- `embalaje_cotizaciones.csv`: dimensiones y precio del embalaje usado en
+  cotizaciones.
+- `facturas_pedimento.csv`: facturas asociadas a un pedimento aduanal.
+- `iave.csv`: cargos de casetas/peaje registrados con el tag IAVE.
+- `repartos.csv`: remitente y destinatario para repartos/entregas.
 
 ## ⚠️ Nota sobre privacidad de datos
 
@@ -63,6 +68,9 @@ descargar esa información:
   Moctezuma, Benol Concretos).
 - `cargas_combustible.csv`: nombre completo de una persona real como operador
   de ejemplo.
+- `repartos.csv`: una fila con razón social y RFC reales de una empresa
+  (Henkel Capital) y, más sensible aún, el **nombre completo y RFC personal**
+  de una persona física real.
 
 Si esto cambia de opinión en el futuro, reemplaza esos archivos con una
 versión que solo tenga la fila de encabezados (o datos de ejemplo ficticios,
