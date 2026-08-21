@@ -155,7 +155,35 @@ Tabla simple: Ma[ntenimiento], Fe[cha], Im[porte], Comentarios — se llena
 con la acción "Agrega Mantenimientos" de la barra superior, y se relaciona
 con el catálogo de Mantenimientos (ver `11-menu-navegacion-2.md`).
 
-Las pestañas **Vales de Almacen**, **Evidencias**, **Compras** y **Viajes
-Informe** siguen el mismo patrón de tabla simple con su acción "Agregar"
-correspondiente en la barra superior (Agrega Vales Almacen, Agrega
-Compras, Agregar Viaje Informe).
+## Pestaña Vales de Almacen
+
+Tabla simple: Vale, Fe[cha], Im[porte], Comentario — se llena con la acción
+"Agrega Vales Almacen" de la barra superior.
+
+## Pestaña Evidencias
+
+A diferencia de la pestaña Evidencias de Viajes/Factura/Abonos (que es una
+bitácora de archivos), aquí es un panel de **carga y autorización** de la
+liquidación:
+
+- **Escaneo**: zona para seleccionar o arrastrar el archivo escaneado de
+  soporte de la liquidación.
+- **Adjunto** y **Adjuntado**: nombre/fecha del archivo ya adjuntado.
+- Panel de autorización con dos firmas: **Gerencia** y **Aut.
+  Liquidaciones**, cada una con su campo **Autorizado** — es decir, la
+  liquidación requiere la autorización de ambas partes antes de
+  considerarse aprobada.
+
+## Pestaña Compras
+
+Tabla: Compra (folio), Fecha, Prove[edor], Come[ntario], Subtotal,
+Impuesto, Total, con Editar/Borrar — compras cargadas a esta liquidación
+(ej. refacciones, insumos comprados durante el periodo), relacionado con
+el módulo de Compras (ver `11-menu-navegacion-2.md`).
+
+## Pestaña Viajes Informe
+
+Tabla "Folio Sub Viaje" con columna **Viaje Informe** — viajes de tipo
+informe (sin facturación propia, solo para llevar registro) incluidos en
+la liquidación, alimentada por la acción "Agregar Viaje Informe" de la
+barra superior.
