@@ -54,6 +54,45 @@ factura), Transfer, Evidencias, Estado de Cuenta, Factura Electronica.
 - **A Cuenta Tercero** (sección colapsable): cuando la operación se
   factura a nombre y por cuenta de un tercero.
 
+## Addendas (parte final de la pestaña Factura)
+
+- **Addendas generales**: Tipo Documento, Referencia1, Referencia2,
+  Addendas (catálogo de addenda a usar) y ocho campos libres **Add Campo A**
+  a **Add Campo H**, para acomodar cualquier addenda que exija un cliente.
+- **Addenda MABE**: bloque específico ya preconfigurado para clientes que
+  exigen addenda MABE — Campo A a Campo F, Tipo, Descripcion y la casilla
+  **Descuento**.
+- Pie del formulario: **Documentador**, **Modifico**, **Modificado** (igual
+  que en Viajes).
+
+## Pestaña Viajes (dentro de Factura)
+
+Tabla de los viajes anexados a esta factura: V[iaje], T[icket], F[echa],
+U[nidad], D[estino], UUID, P[eso], F[lete], con botones **Ver**, **Editar**
+y **Borrar** (desvincular ese viaje de la factura). Una factura puede
+llevar más de un viaje anexado.
+
+## Pestaña Transfer (dentro de Factura)
+
+Tabla de transferencias/traspasos relacionados con esta factura: XFolio,
+Creado, Cliente, Lugar S[alida], Destino, Costo.
+
+## Pestaña Evidencias (dentro de Factura)
+
+Igual patrón que en Viajes: botón **Anexar Evidencia** y tabla con Fecha,
+Documentador, Evidencia, Comentario.
+
+## Pestaña Estado de Cuenta (dentro de Factura)
+
+Resume la situación de cobro de la factura:
+
+- **Total**, **Abonado**, **Saldo** (Total menos Abonado).
+- **Creado**, **Fecha Revision**, **Dias de Credito**, **Vence**, **Fecha
+  Pago Abono**.
+- Tabla de abonos/pagos recibidos: Abono, Fecha, Forma Pa[go] (ver
+  `c_FormaPago`), Bancos, Importe, Comentario — cada fila aquí corresponde
+  a un **Generar Abono** (Complemento de Pago/REP) aplicado a esta factura.
+
 ## Ejemplo de consistencia con el viaje de origen
 
 Cuando una factura se genera desde "Traer Todos los Datos", los campos de
