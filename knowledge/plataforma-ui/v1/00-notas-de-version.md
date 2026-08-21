@@ -32,6 +32,9 @@ Contenido incluido hasta ahora:
   barra de acciones (Generar Viaje, Anexa Viajes, Traer Todos los Datos,
   Generar Abono/REP), campos propios de crédito/correo/factura global, y
   su relación con el formulario de Viajes del que normalmente se origina.
+- `23-abonos-formulario.md`: proceso de la pantalla de Abonos (Complemento
+  de Pago/REP) — datos del pago, facturas relacionadas, timbrado del REP y
+  un ejemplo real de mensaje de error de timbrado.
 
 Se irá completando conforme se compartan más capturas de la plataforma
 (formularios específicos, pasos de un proceso, etc.).
