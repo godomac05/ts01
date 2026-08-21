@@ -1,8 +1,10 @@
 import fs from "fs";
 import path from "path";
+import { config } from "../config";
 import type { KnowledgeChunk } from "../types";
 
 const KNOWLEDGE_DIR = path.join(__dirname, "..", "..", "knowledge");
+const PLATFORM_UI_DIR = path.join(KNOWLEDGE_DIR, "plataforma-ui");
 
 /**
  * Divide un archivo markdown en fragmentos usando los encabezados "## " como
@@ -40,19 +42,36 @@ function chunkMarkdown(source: string, raw: string): KnowledgeChunk[] {
   return chunks;
 }
 
-export function loadKnowledgeBase(): KnowledgeChunk[] {
-  if (!fs.existsSync(KNOWLEDGE_DIR)) return [];
+function loadMarkdownDir(dir: string, sourcePrefix: string): KnowledgeChunk[] {
+  if (!fs.existsSync(dir)) return [];
 
   const files = fs
-    .readdirSync(KNOWLEDGE_DIR)
+    .readdirSync(dir)
     .filter((f) => f.endsWith(".md"))
     .sort();
 
-  const allChunks: KnowledgeChunk[] = [];
+  const chunks: KnowledgeChunk[] = [];
   for (const file of files) {
-    const fullPath = path.join(KNOWLEDGE_DIR, file);
+    const fullPath = path.join(dir, file);
     const raw = fs.readFileSync(fullPath, "utf-8");
-    allChunks.push(...chunkMarkdown(file, raw));
+    chunks.push(...chunkMarkdown(`${sourcePrefix}${file}`, raw));
   }
-  return allChunks;
+  return chunks;
+}
+
+export function loadKnowledgeBase(): KnowledgeChunk[] {
+  // Conocimiento general (CFDI, Carta Porte, catálogos, FAQ): no depende de
+  // la versión de la plataforma, siempre se carga completo.
+  const generalChunks = loadMarkdownDir(KNOWLEDGE_DIR, "");
+
+  // Conocimiento específico de la interfaz/proceso de la plataforma: solo
+  // se carga la carpeta de la versión activa (config.platformUiVersion),
+  // para poder tener varias versiones documentadas sin mezclarlas.
+  const platformUiDir = path.join(PLATFORM_UI_DIR, config.platformUiVersion);
+  const platformUiChunks = loadMarkdownDir(
+    platformUiDir,
+    `plataforma-ui/${config.platformUiVersion}/`,
+  );
+
+  return [...generalChunks, ...platformUiChunks];
 }

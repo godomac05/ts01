@@ -35,6 +35,12 @@ para inyectar solo los fragmentos más útiles en cada respuesta.
 - `51-catalogos-carta-porte.md`: catálogos específicos de Carta Porte (tipo
   de permiso SCT, configuración vehicular, subtipo de remolque, embalaje,
   unidades y claves de producto/servicio más usadas en transporte de carga).
+- `plataforma-ui/`: documentación de pantallas y procesos de **tu**
+  plataforma (a partir de capturas de pantalla), **versionada por carpeta**
+  (`v1/`, `v2/`, ...) — ver `plataforma-ui/README.md` para el procedimiento
+  completo. Solo se carga la versión activa (`PLATFORM_UI_VERSION` en
+  `.env`), así que documentar una versión nueva no borra ni mezcla la
+  anterior.
 
 ## Nota importante sobre vigencia
 
