@@ -22,8 +22,12 @@ Contenido incluido hasta ahora:
 - `20-viajes-formulario.md`: proceso completo de la pantalla de Viajes
   (creación/edición de un Carta Porte) — barra de acciones, datos
   generales, Emisor/Cargo A, Datos Generales Carta Porte, Autotransporte,
-  Figura de Transporte, Remitente/Destinatario, Embalaje, Seguros y
-  Partidas, con la clave exacta de cada campo.
+  Figura de Transporte, Remitente/Destinatario, Embalaje, Seguros,
+  Partidas, costos/totales, notas y addendas, con la clave exacta de cada
+  campo.
+- `21-viajes-otras-pestanas.md`: el resto de pestañas del formulario de
+  Viajes — Gastos, Evidencias, CFDI Traslado (descarga de XML/PDF y
+  estatus de timbrado), Tracking, Manifiesto y Liquidación del operador.
 
 Se irá completando conforme se compartan más capturas de la plataforma
 (formularios específicos, pasos de un proceso, etc.).

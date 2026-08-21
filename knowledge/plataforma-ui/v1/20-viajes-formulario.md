@@ -159,3 +159,42 @@ cobra, ej. "FLETE") es distinta de la clave de producto/servicio de
 **Embalaje** (la mercancía física que se transporta, ej. "PIEDRA DE YESO A
 GRANEL") — son dos catálogos de propósito distinto aunque ambos usen
 `c_ClaveProdServ`.
+
+## Costos y totales del viaje
+
+Sección de desglose de costos e ingreso, más abajo en la misma pestaña
+Viaje/Solicitudes:
+
+- Conceptos de costo: **Flete**, **Seguro**, **Carga**, **Descarga**,
+  **Recoleccion**, **Repartos**, **Demoras**, **Autopistas**, **Otros**,
+  **ISR**.
+- Totales calculados: **Subtotal1** (suma de los conceptos de costo),
+  **Descuentos**, **Subtotal**, **Impuesto**, **Retenido**, **Importe
+  ISR**, **Total** (lo que se cobra al cliente).
+
+## Otros (kilometraje y fechas reales)
+
+- **Km Inicial**, **Km Final**, **Kms Recorridos** (calculado).
+- **Precio Comb[ustible]**, **Comision Descuentos**, **Otros Descuentos**.
+- **Fecha de Carga** / **Hora de Carga**, **Fecha de Descarga** / **Hora de
+  Descarga**: fechas y horas reales (distintas de "Cita Carga"/"Cita
+  Descarga" del Remitente/Destinatario, que son las programadas).
+
+## Notas
+
+Tres cuadros de texto libre: **Instrucciones**, **Comentarios**,
+**Indicaciones**.
+
+## Cuenta Espejo, App Móvil y Addendas
+
+- **Cuenta Espejo**: campo de referencia contable/bancaria del viaje.
+- **Datos de Viaje App Móvil** (solo lectura, se llenan desde la app móvil
+  del operador): Cita Carga, Confirmación Viaje, Arribo a Lugar de Carga,
+  Inicio Viaje, Salida con Carga, Salida de Destino, Arribo Destino — es la
+  bitácora real de movimientos del operador en campo.
+- **Addendas**: catálogo de addenda a incluir en el CFDI (información
+  adicional que exige un cliente específico) y **Add Campo A** para su
+  valor.
+- Pie del formulario: **Documentador** (quién creó el viaje), **Modifico**
+  y **Modificado** (usuario y fecha de la última modificación). Botones
+  **Guardar** y **Cerrar**.
