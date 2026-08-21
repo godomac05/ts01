@@ -93,6 +93,28 @@ Resume la situación de cobro de la factura:
   `c_FormaPago`), Bancos, Importe, Comentario — cada fila aquí corresponde
   a un **Generar Abono** (Complemento de Pago/REP) aplicado a esta factura.
 
+## Pestaña Factura Electrónica (dentro de Factura)
+
+Es el equivalente, para la factura, de la pestaña "CFDI Traslado" del
+formulario de Viajes (ver `21-viajes-otras-pestanas.md`) — aquí se ve el
+estatus y los datos del CFDI de Ingreso/Pago ya timbrado:
+
+- **Archivos y Procesos**: Re-Envío Archivos (PDF y XML) por Email,
+  Descargar XML, Descargar PDF, Recuperar Folio CFDI.
+- **Datos CFDi**: Serie, Folio, Version, **Timbró** (equivalente al estatus
+  de timbrado), Fecha y Hora, Fecha de Timbrado, Uuid, No. Certificado,
+  Certificado del SAT, Mensaje de Error, IdCCP e IdCCP Relacionado,
+  Sustituida Por / UUID Sustituido Por, Tipo Relacion.
+- **Cancelación**: Causa (motivo de cancelación conforme al catálogo del
+  SAT), Canceló (usuario) y Cancelado (fecha/hora).
+- **UUID Relacionado**: tabla con cfdiuuid Relacionado, XFolio y Tipo
+  Relacion — historial de CFDIs relacionados con esta factura (por
+  ejemplo, sus REP, sustituciones o notas de crédito).
+
+Si un usuario pregunta "¿dónde descargo el XML/PDF de mi factura?", "¿por
+qué no se timbró mi factura?" o "¿cómo cancelo una factura?", esta es la
+pestaña a revisar.
+
 ## Ejemplo de consistencia con el viaje de origen
 
 Cuando una factura se genera desde "Traer Todos los Datos", los campos de
