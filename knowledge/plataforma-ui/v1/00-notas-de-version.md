@@ -9,12 +9,16 @@ una carpeta `v2/` (ver `../README.md` para el procedimiento).
 
 Contenido incluido hasta ahora:
 
-- `10-menu-navegacion.md` y `11-menu-navegacion-2.md`: mapa completo del
-  menú lateral (Catálogo/Búsqueda, Tráfico, Cotizaciones, Solicitudes,
-  Transfer, Viajes, Manifiesto, Gastos, Facturación, Cobranza,
-  Liquidaciones, Póliza/Banco, Almacén/Compras, Mantenimiento, Cuentas Por
-  Pagar, RH, Reportes Gerenciales), con la ruta exacta de cada catálogo y
-  proceso.
+- `10-menu-navegacion.md`, `11-menu-navegacion-2.md` y
+  `12-menu-navegacion-3.md`: mapa completo del menú lateral (Catálogo/
+  Búsqueda, Tráfico, Cotizaciones, Solicitudes, Transfer, Viajes,
+  Manifiesto, Gastos, Facturación, Cobranza, Liquidaciones, Póliza/Banco,
+  Almacén/Compras, Mantenimiento, Cuentas Por Pagar, RH, Reportes
+  Gerenciales, Pólizas Contables, Unidades DataVoice), con la ruta exacta
+  de cada catálogo y proceso.
+- `13-menu-calidad-seguridad.md`: módulo de Gestión de Calidad y Seguridad
+  (Documentos Controlados por área, Certificaciones, Accidentes/
+  Incidentes, Auditorías, Comité de Calidad y Seguridad, Preferencias).
 
 Se irá completando conforme se compartan más capturas de la plataforma
 (formularios específicos, pasos de un proceso, etc.).
