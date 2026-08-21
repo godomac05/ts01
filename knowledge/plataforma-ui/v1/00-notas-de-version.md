@@ -19,6 +19,11 @@ Contenido incluido hasta ahora:
 - `13-menu-calidad-seguridad.md`: módulo de Gestión de Calidad y Seguridad
   (Documentos Controlados por área, Certificaciones, Accidentes/
   Incidentes, Auditorías, Comité de Calidad y Seguridad, Preferencias).
+- `20-viajes-formulario.md`: proceso completo de la pantalla de Viajes
+  (creación/edición de un Carta Porte) — barra de acciones, datos
+  generales, Emisor/Cargo A, Datos Generales Carta Porte, Autotransporte,
+  Figura de Transporte, Remitente/Destinatario, Embalaje, Seguros y
+  Partidas, con la clave exacta de cada campo.
 
 Se irá completando conforme se compartan más capturas de la plataforma
 (formularios específicos, pasos de un proceso, etc.).
