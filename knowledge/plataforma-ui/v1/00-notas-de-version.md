@@ -35,6 +35,10 @@ Contenido incluido hasta ahora:
 - `23-abonos-formulario.md`: proceso de la pantalla de Abonos (Complemento
   de Pago/REP) — datos del pago, facturas relacionadas, timbrado del REP y
   un ejemplo real de mensaje de error de timbrado.
+- `24-liquidaciones-formulario.md`: proceso de la pantalla de Liquidaciones
+  (liquidación de operador/unidad por periodo, distinta de la liquidación
+  por viaje individual) — ingresos, gastos comprobados, resultado del
+  operador y diesel del tracto.
 
 Se irá completando conforme se compartan más capturas de la plataforma
 (formularios específicos, pasos de un proceso, etc.).
