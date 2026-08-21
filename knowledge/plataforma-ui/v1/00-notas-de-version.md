@@ -9,9 +9,11 @@ una carpeta `v2/` (ver `../README.md` para el procedimiento).
 
 Contenido incluido hasta ahora:
 
-- `10-menu-navegacion.md`: mapa completo del menú lateral (Catálogo/
-  Búsqueda, Tráfico, Cotizaciones, Solicitudes, Transfer, Viajes,
-  Manifiesto, Gastos, Facturación), con la ruta exacta de cada catálogo y
+- `10-menu-navegacion.md` y `11-menu-navegacion-2.md`: mapa completo del
+  menú lateral (Catálogo/Búsqueda, Tráfico, Cotizaciones, Solicitudes,
+  Transfer, Viajes, Manifiesto, Gastos, Facturación, Cobranza,
+  Liquidaciones, Póliza/Banco, Almacén/Compras, Mantenimiento, Cuentas Por
+  Pagar, RH, Reportes Gerenciales), con la ruta exacta de cada catálogo y
   proceso.
 
 Se irá completando conforme se compartan más capturas de la plataforma

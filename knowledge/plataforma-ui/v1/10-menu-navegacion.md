@@ -61,7 +61,8 @@ unidades, operadores, usuarios, etc.). Todas estas son pantallas de consulta
 Las plantillas descargables de Clientes, Clientes Destino, Rutas y Unidades
 (ver `40-plantillas-descargables.md`) corresponden a los catálogos
 **Clientes**, **Importar Clientes Destinos**, **Rutas** y **Unidades** de
-este submenú.
+este submenú. La plantilla de Tarifas de Clientes corresponde al catálogo
+**Tarifas de Clientes** de este mismo submenú.
 
 ## Tráfico → Catálogos (generales)
 
