@@ -104,3 +104,58 @@ computador de la unidad, si aplica), Margen, Precio Litro (editable), Kms
 Inicial/Final (editables), Kms Recorridos, Rendimiento, Diesel Descontar,
 Total Descontar, y la casilla **Cobrar Combustible?** (si se le descuenta
 al operador el faltante de combustible).
+
+## Diesel Thermo y Diesel Thermo 2
+
+Cuando la unidad lleva equipo de refrigeración (thermo), se agregan uno o
+dos bloques adicionales idénticos entre sí — **Diesel Thermo** y **Diesel
+Thermo 2** (para unidades con dos equipos thermo) — con la misma lógica que
+Diesel Tracto pero medida en **horas de uso** en lugar de kilómetros, ya
+que el motor del thermo no se mide por distancia recorrida:
+
+- **Unidad Thermo**: catálogo del equipo de refrigeración específico.
+- Diesel Vale, Diesel Consumido (editable), Diesel Comprobado, Total
+  Diesel, Diesel ECM, Margen.
+- **Horas Inicial** / **Horas Final** (editables), **Horas Recorridas**,
+  **Rendimiento**.
+- Precio Litro (editable), Diesel Descontar, Total Descontar.
+- Casilla **Cobrar Combustible?** (Diesel Thermo) / **Cobrar Lts
+  Operador?** (Diesel Thermo 2).
+
+Estos alimentan los campos **Comb.F Thermo** y **Comb.F Thermo2** del
+bloque de Resultado Operador ya descrito arriba.
+
+## Pestaña Viajes Liquidados
+
+Tabla de los viajes incluidos en esta liquidación (botón **Agregar
+Nuevo**, con ayuda contextual **Help**): Viaje, Guia, R[uta], Flete,
+Im[puesto], Re[tenido], Su[btotal], Total, T[ipo], C, C, con acciones
+Editar (ícono de lápiz) y **Borrar**.
+
+## Pestaña Gastos
+
+- Tabla **Gastos**: V[er], Tipo (ej. Deposito), Ga[sto], Fol[io], Fe[cha],
+  C, Su[btotal], Im[porte], C, Litros, con Ver/Editar/Borrar.
+- **Cargos a Unidades**: tabla Folio, Creado, Comentarios, Importe — trae
+  lo agregado con la acción "Agregar Cargos Unidades" de la barra
+  superior.
+- **Impuestos**: tabla Periodo, Importe.
+- **Prestamos / Fianzas**: tabla Folio, Concepto, Importe.
+
+## Pestaña IAVE
+
+- Tabla **IAVE**: Codigo, Unidad, Fecha, Hora, Caseta, Clase, Impo[rte] —
+  se llena con la acción "Trae IAVE" de la barra superior.
+- Tabla **Casetas Sin IVA**: Codigo, Unidad, Fecha, Caseta, Clase, Importe
+  — para casetas que no desglosan IVA en su comprobante.
+
+## Pestaña Mantenimientos
+
+Tabla simple: Ma[ntenimiento], Fe[cha], Im[porte], Comentarios — se llena
+con la acción "Agrega Mantenimientos" de la barra superior, y se relaciona
+con el catálogo de Mantenimientos (ver `11-menu-navegacion-2.md`).
+
+Las pestañas **Vales de Almacen**, **Evidencias**, **Compras** y **Viajes
+Informe** siguen el mismo patrón de tabla simple con su acción "Agregar"
+correspondiente en la barra superior (Agrega Vales Almacen, Agrega
+Compras, Agregar Viaje Informe).
