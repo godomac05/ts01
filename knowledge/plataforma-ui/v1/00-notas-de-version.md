@@ -28,6 +28,10 @@ Contenido incluido hasta ahora:
 - `21-viajes-otras-pestanas.md`: el resto de pestañas del formulario de
   Viajes — Gastos, Evidencias, CFDI Traslado (descarga de XML/PDF y
   estatus de timbrado), Tracking, Manifiesto y Liquidación del operador.
+- `22-facturacion-formulario.md`: proceso de la pantalla de Facturación —
+  barra de acciones (Generar Viaje, Anexa Viajes, Traer Todos los Datos,
+  Generar Abono/REP), campos propios de crédito/correo/factura global, y
+  su relación con el formulario de Viajes del que normalmente se origina.
 
 Se irá completando conforme se compartan más capturas de la plataforma
 (formularios específicos, pasos de un proceso, etc.).
