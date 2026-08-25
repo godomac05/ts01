@@ -96,3 +96,72 @@ Tractosoft, para evitar la suspensión del servicio de timbrado. Si un
 usuario pregunta por un aviso de pago pendiente, confírmale que es un
 recordatorio legítimo y que, si tiene dudas sobre el monto o la fecha exacta,
 contacte a soporte o al área de facturación.
+
+## Credenciales incorrectas o acceso lento
+
+Si el usuario dice que le funcionaba antes con el mismo usuario/contraseña
+pero ahora no puede entrar (o el ingreso está muy lento), revisa con él estos
+tres puntos, en este orden: el **link/enlace de acceso** (debe ser el de su
+dominio específico, no uno genérico), el **usuario** y la **contraseña**.
+Casi siempre el problema es que uno de esos tres datos está mal — indícale
+que confirme los tres antes de seguir escalando el caso.
+
+## "Ya existe otra remisión similar" al guardar un viaje / no puedo facturarlo
+
+Si al guardar un viaje para su Carta Porte el sistema avisa que ya existe
+una remisión similar, y al querer facturar no aparece la opción, dos causas
+frecuentes son:
+
+- El viaje **ya fue facturado** anteriormente (revisa la pestaña Viajes
+  dentro de la Factura, ver `22-facturacion-formulario.md`).
+- No se ejecutó el proceso correcto: en **Facturación**, el botón correcto
+  para traer los datos del viaje es **"Traer Todos los Datos"** (ver
+  `22-facturacion-formulario.md`) — no capturar todo de nuevo a mano.
+
+## No puedo procesar una liquidación / no descarga el PDF
+
+Si al procesar una liquidación (pestaña Liquidacion de un Viaje, o el
+formulario completo de Liquidaciones) el sistema no avanza y tampoco genera
+el PDF, revisa que el campo **Diesel Consumido** no esté vacío o en cero —
+debe llevar al menos un valor (por ejemplo, 1) para que el proceso continúe.
+Ver `21-viajes-otras-pestanas.md` y `24-liquidaciones-formulario.md`.
+
+## Por qué una liquidación aparece en rojo en el listado
+
+En el listado de **Liquidaciones x Operador**, una fila resaltada en rojo
+generalmente significa que esa liquidación **está pendiente de liquidar**
+(no que tenga un error) — hay que completarla o procesarla.
+
+## No puedo timbrar un Complemento de Pago (REP)
+
+Si un REP/Abono no timbra y no hay un motivo obvio, revisa si ese abono
+**tiene factoraje activado** (ver la sección Factoraje del formulario de
+Abonos en `23-abonos-formulario.md`) — es una causa conocida de rechazo que
+a veces requiere un ajuste desde soporte técnico de Tractosoft. Si el
+mensaje de error no menciona un motivo identificable y viene de una
+integración externa vía API, es posible que el problema esté del lado del
+sistema del cliente que consume esa API, no de Tractosoft — sugiere
+revisarlo con ese proveedor.
+
+## Solicitudes de desarrollo a la medida
+
+Si un usuario pide una funcionalidad que no existe de forma estándar (por
+ejemplo, automatizar el tipo de cambio según el Diario Oficial de la
+Federación), indícale que **sí es posible como desarrollo a la medida**,
+pero normalmente tiene un costo adicional y requiere una cotización formal.
+Ofrécele generar esa solicitud con el equipo de soporte.
+
+## Conectividad lenta o intermitente
+
+Si un usuario reporta que la plataforma va muy lenta o no carga, y ya se
+descartó un problema general de la plataforma, sugiere primero **reiniciar
+su módem/router** — es una causa común y de solución simple antes de
+escalar el caso como un problema del sistema.
+
+## Multiempresa: un grupo de soporte puede tener más de una razón social
+
+Un mismo grupo/cuenta de soporte puede administrar más de una razón social
+dentro de la plataforma. Si un usuario reporta un bloqueo o problema y no
+se explica con los datos esperados, considera que el caso podría
+pertenecer a **otra razón social distinta** dentro del mismo grupo
+multiempresa.

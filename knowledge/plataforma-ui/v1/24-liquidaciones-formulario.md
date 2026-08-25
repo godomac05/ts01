@@ -12,8 +12,8 @@ viaje suelto.
 La pantalla **-Liquidaciones x Operador** muestra el listado con columnas:
 Operador, Folio (prefijo "LQ"), Fe[cha], Di[as] (laborados), Kms Inicial,
 Kms Final, Rendimiento, Tot[al], Comision Operador, Estatus. Las filas
-resaltadas en rojo/rosa suelen indicar liquidaciones con algún resultado en
-cero o inconsistente que conviene revisar antes de confirmarlas.
+resaltadas en rojo/rosa indican liquidaciones **pendientes de liquidar**
+(no un error) — hay que completarlas o procesarlas.
 
 ## Barra de acciones del formulario de Liquidación
 
