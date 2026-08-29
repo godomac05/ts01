@@ -14,6 +14,8 @@ import { parseIncomingTextMessages, verifyWebhookChallenge } from "./whatsapp/we
 import { appendTurns, getHistory } from "./session/store";
 import { detectTemplateRequest, TemplateDetection } from "./templates/detector";
 import { isImageTemplate, TEMPLATES } from "./templates/registry";
+import { detectPedimentoQuery } from "./pedimentos/detector";
+import { validatePedimentoFormat } from "./pedimentos/validate";
 
 const app = express();
 app.use(express.json());
@@ -82,6 +84,17 @@ async function handleIncomingMessage(
     return;
   }
 
+  const pedimentoDetection = detectPedimentoQuery(text);
+  if (pedimentoDetection) {
+    const reply = buildPedimentoReply(pedimentoDetection.rawNumber);
+    await sendTextMessage(from, reply);
+    appendTurns(from, [
+      { role: "user", content: text },
+      { role: "assistant", content: reply },
+    ]);
+    return;
+  }
+
   const history = getHistory(from);
   const reply = await generateReply(text, history, knowledgeIndex);
 
@@ -122,6 +135,28 @@ async function sendTemplateResponse(
     await sendDocumentMessage(to, link, template.filename, template.description);
   }
   return `[Se envió el archivo: ${template.displayName}]`;
+}
+
+/** Arma la respuesta de validación de formato de un número de pedimento. */
+function buildPedimentoReply(rawNumber: string): string {
+  const result = validatePedimentoFormat(rawNumber);
+
+  if (!result.valid) {
+    const lines = result.errors.map((e) => `❌ ${e}`).join("\n");
+    return `No pude validar el formato de ese número de pedimento:\n\n${lines}\n\n📄 Un pedimento válido tiene 15 dígitos: año (2) + aduana (2) + patente (4) + folio (7).`;
+  }
+
+  const { anio, aduana, patente, folio } = result.fields!;
+  return (
+    `✅ El formato del pedimento es correcto:\n\n` +
+    `📄 Año: 20${anio}\n` +
+    `📄 Aduana: ${aduana}\n` +
+    `📄 Patente: ${patente}\n` +
+    `📄 Folio: ${folio}\n\n` +
+    `⚠️ Esta validación solo revisa el *formato* del número (estructura correcta) — ` +
+    `no confirma que el pedimento exista realmente ante el SAT. Para confirmarlo, ` +
+    `consúltalo directamente en el portal del SAT.`
+  );
 }
 
 app.get("/health", (_req, res) => {
