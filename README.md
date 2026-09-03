@@ -31,6 +31,11 @@ Meta WhatsApp Cloud API  ──webhook──▶  src/server.ts (Express)
 - **Plantillas descargables**: archivos en `plantillas/` (Excel/CSV) que los
   usuarios pueden pedir por WhatsApp (ej. "plantilla de rutas") y reciben
   directo como documento adjunto. Ver `plantillas/README.md`.
+- **Imágenes**: si un usuario manda una foto/captura de pantalla, se envía
+  directo a Claude (visión) junto con el texto/caption, sin pasos extra.
+- **Notas de voz**: se transcriben primero con Whisper (OpenAI,
+  `src/transcription/whisper.ts`, requiere `OPENAI_API_KEY`) y el texto
+  resultante se procesa exactamente igual que un mensaje escrito.
 
 ## Requisitos
 
@@ -64,6 +69,10 @@ Meta WhatsApp Cloud API  ──webhook──▶  src/server.ts (Express)
    - `PLATFORM_NAME`: se usa en el prompt del bot. Cuando el bot no puede
      resolver algo, recomienda contactar al "grupo de soporte
      correspondiente" del usuario (sin dar un correo o contacto fijo).
+   - `OPENAI_API_KEY` (opcional): solo si quieres soportar notas de voz — se
+     usa para transcribirlas con Whisper antes de mandarlas a Claude. Si no
+     la configuras, el bot le avisa al usuario que no puede procesar audio
+     en vez de fallar.
 
 3. Agrega o reemplaza el contenido en `knowledge/` con la documentación real
    de tu plataforma (ver `knowledge/README.md`).

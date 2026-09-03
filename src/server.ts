@@ -18,6 +18,7 @@ import { detectTemplateRequest, TemplateDetection } from "./templates/detector";
 import { isImageTemplate, TEMPLATES } from "./templates/registry";
 import { detectPedimentoQuery } from "./pedimentos/detector";
 import { validatePedimentoFormat } from "./pedimentos/validate";
+import { transcribeAudio } from "./transcription/whisper";
 
 const app = express();
 app.use(express.json());
@@ -77,8 +78,16 @@ async function handleIncomingMessage(message: IncomingWhatsAppMessage): Promise<
     return;
   }
 
-  const text = message.text ?? "";
+  if (message.type === "audio" && message.audio) {
+    await handleIncomingAudio(from, message.audio);
+    return;
+  }
 
+  await handleTextMessage(from, message.text ?? "");
+}
+
+/** Procesa un mensaje de texto (escrito o transcrito de una nota de voz). */
+async function handleTextMessage(from: string, text: string): Promise<void> {
   const templateDetection = detectTemplateRequest(text);
   if (templateDetection) {
     const summary = await sendTemplateResponse(from, templateDetection);
@@ -109,6 +118,54 @@ async function handleIncomingMessage(message: IncomingWhatsAppMessage): Promise<
     { role: "user", content: text },
     { role: "assistant", content: reply },
   ]);
+}
+
+/** Descarga y transcribe una nota de voz, y la procesa igual que un mensaje de texto. */
+async function handleIncomingAudio(
+  from: string,
+  audio: { mediaId: string; mimeType: string },
+): Promise<void> {
+  if (!config.openaiApiKey) {
+    await sendTextMessage(
+      from,
+      "Por el momento no puedo procesar notas de voz (falta configuración del servidor). ¿Me escribes tu pregunta en texto, por favor?",
+    );
+    return;
+  }
+
+  let media: { base64: string; mimeType: string };
+  try {
+    media = await downloadMedia(audio.mediaId);
+  } catch (error) {
+    console.error(`No se pudo descargar la nota de voz de ${from}:`, error);
+    await sendTextMessage(
+      from,
+      "No pude descargar tu nota de voz 😕 Intenta mandarla de nuevo en unos segundos.",
+    );
+    return;
+  }
+
+  let transcribedText: string;
+  try {
+    transcribedText = await transcribeAudio(media.base64, media.mimeType);
+  } catch (error) {
+    console.error(`No se pudo transcribir la nota de voz de ${from}:`, error);
+    await sendTextMessage(
+      from,
+      "No pude entender tu nota de voz. ¿Me la escribes en texto, por favor?",
+    );
+    return;
+  }
+
+  if (!transcribedText) {
+    await sendTextMessage(
+      from,
+      "No logré entender el audio (puede que esté en silencio o muy ruidoso). ¿Me escribes tu pregunta en texto?",
+    );
+    return;
+  }
+
+  await handleTextMessage(from, transcribedText);
 }
 
 /** Descarga la imagen enviada por el usuario y genera una respuesta basada en su contenido. */

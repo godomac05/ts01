@@ -40,6 +40,7 @@ export function parseIncomingMessages(body: unknown): IncomingWhatsAppMessage[] 
           type?: string;
           text?: { body?: string };
           image?: { id?: string; mime_type?: string; caption?: string };
+          audio?: { id?: string; mime_type?: string };
         };
 
         if (!msg.from || !msg.id) continue;
@@ -65,6 +66,20 @@ export function parseIncomingMessages(body: unknown): IncomingWhatsAppMessage[] 
               mediaId: msg.image.id,
               mimeType: msg.image.mime_type,
               caption: msg.image.caption,
+            },
+          });
+          continue;
+        }
+
+        if (msg.type === "audio" && msg.audio?.id && msg.audio?.mime_type) {
+          messages.push({
+            from: msg.from,
+            id: msg.id,
+            timestamp: msg.timestamp ?? String(Date.now()),
+            type: "audio",
+            audio: {
+              mediaId: msg.audio.id,
+              mimeType: msg.audio.mime_type,
             },
           });
         }

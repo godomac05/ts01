@@ -2,12 +2,16 @@ export interface IncomingWhatsAppMessage {
   from: string;
   id: string;
   timestamp: string;
-  type: "text" | "image";
+  type: "text" | "image" | "audio";
   text?: string;
   image?: {
     mediaId: string;
     mimeType: string;
     caption?: string;
+  };
+  audio?: {
+    mediaId: string;
+    mimeType: string;
   };
 }
 

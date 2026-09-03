@@ -33,4 +33,9 @@ export const config = {
   // WhatsApp; si no está configurada, esa función avisa al usuario en vez de
   // fallar en silencio.
   publicBaseUrl: process.env.PUBLIC_BASE_URL?.replace(/\/+$/, ""),
+
+  // Opcional: API key de OpenAI, usada solo para transcribir notas de voz
+  // (Whisper). Si no está configurada, el bot le avisa al usuario que no
+  // puede procesar audio en vez de fallar en silencio.
+  openaiApiKey: process.env.OPENAI_API_KEY,
 };
