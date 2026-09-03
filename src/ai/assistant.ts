@@ -26,27 +26,65 @@ Reglas de respuesta:
 - Las reglas fiscales del SAT cambian con frecuencia (Resolución Miscelánea Fiscal, Anexo 20). Si hay riesgo de que la información esté desactualizada, dilo explícitamente y sugiere verificar en el portal del SAT o con un contador.
 - Si la pregunta es específica de la cuenta o datos del usuario (por ejemplo, un error puntual en su timbrado) y no puedes resolverla con la información disponible, recomienda que se ponga en contacto con el *Grupo de soporte de Tractosoft*. Usa ese nombre exacto, tal cual — nunca inventes abreviaturas ni otros nombres para el soporte. No des una dirección de correo o teléfono específico salvo que el usuario ya lo haya mencionado en la conversación.
 - No proporciones asesoría legal o fiscal definitiva; aclara que es orientación general.
+- Los usuarios a veces mandan una imagen (una captura de pantalla de un error de la plataforma, un documento, una placa, una etiqueta). Cuando recibas una imagen, descríbela brevemente para confirmar que la viste bien y responde con base en lo que muestra, cruzándolo con el CONTEXTO de abajo (por ejemplo, si es un mensaje de error de timbrado, o una pantalla del sistema). Si la imagen no es legible o no tiene relación con CFDI/Carta Porte/la plataforma, dilo con claridad en vez de adivinar.
 
 CONTEXTO RELEVANTE (extraído de la base de conocimiento):
 ${contextChunks || "(No se encontró contexto específico para esta pregunta; responde con tu conocimiento general y las aclaraciones correspondientes.)"}`;
+}
+
+export interface ImageInput {
+  base64: string;
+  mimeType: string;
+}
+
+const SUPPORTED_IMAGE_MEDIA_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/webp",
+] as const;
+type SupportedImageMediaType = (typeof SUPPORTED_IMAGE_MEDIA_TYPES)[number];
+
+function toSupportedMediaType(mimeType: string): SupportedImageMediaType {
+  return (SUPPORTED_IMAGE_MEDIA_TYPES as readonly string[]).includes(mimeType)
+    ? (mimeType as SupportedImageMediaType)
+    : "image/jpeg";
 }
 
 export async function generateReply(
   userMessage: string,
   history: ConversationTurn[],
   knowledgeIndex: KnowledgeIndex,
+  image?: ImageInput,
 ): Promise<string> {
-  const relevantChunks = knowledgeIndex.search(userMessage, 5);
+  // Para la búsqueda en el knowledge base usamos el texto del usuario; si
+  // solo mandó una imagen sin texto, usamos una consulta genérica.
+  const searchQuery = userMessage || "imagen enviada por el usuario";
+  const relevantChunks = knowledgeIndex.search(searchQuery, 5);
   const contextText = relevantChunks
     .map((c) => `### ${c.heading} (fuente: ${c.source})\n${c.content}`)
     .join("\n\n");
+
+  const currentTurnContent: Anthropic.MessageParam["content"] = image
+    ? [
+        {
+          type: "image",
+          source: {
+            type: "base64",
+            media_type: toSupportedMediaType(image.mimeType),
+            data: image.base64,
+          },
+        },
+        { type: "text", text: userMessage || "(El usuario no escribió texto junto con la imagen.)" },
+      ]
+    : userMessage;
 
   const messages: Anthropic.MessageParam[] = [
     ...history.map((turn) => ({
       role: turn.role,
       content: turn.content,
     })),
-    { role: "user", content: userMessage },
+    { role: "user", content: currentTurnContent },
   ];
 
   const response = await client.messages.create({

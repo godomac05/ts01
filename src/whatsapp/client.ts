@@ -63,3 +63,43 @@ export async function markMessageAsRead(messageId: string): Promise<void> {
     message_id: messageId,
   });
 }
+
+/**
+ * Descarga un archivo multimedia (ej. una imagen) que un usuario envió por
+ * WhatsApp. Es un proceso de dos pasos: primero se pide la URL temporal del
+ * archivo a partir de su media ID, y luego se descarga esa URL — ambos pasos
+ * requieren el token de acceso de la app.
+ */
+export async function downloadMedia(
+  mediaId: string,
+): Promise<{ base64: string; mimeType: string }> {
+  const infoResponse = await fetch(
+    `https://graph.facebook.com/${config.whatsappApiVersion}/${mediaId}`,
+    { headers: { Authorization: `Bearer ${config.whatsappToken}` } },
+  );
+
+  if (!infoResponse.ok) {
+    throw new Error(
+      `No se pudo obtener la URL del archivo (${infoResponse.status}): ${await infoResponse.text()}`,
+    );
+  }
+
+  const info = (await infoResponse.json()) as { url?: string; mime_type?: string };
+  if (!info.url) {
+    throw new Error("La respuesta de la API de medios de WhatsApp no incluyó una URL.");
+  }
+
+  const fileResponse = await fetch(info.url, {
+    headers: { Authorization: `Bearer ${config.whatsappToken}` },
+  });
+
+  if (!fileResponse.ok) {
+    throw new Error(`No se pudo descargar el archivo (${fileResponse.status}).`);
+  }
+
+  const buffer = Buffer.from(await fileResponse.arrayBuffer());
+  return {
+    base64: buffer.toString("base64"),
+    mimeType: info.mime_type ?? "image/jpeg",
+  };
+}

@@ -2,7 +2,13 @@ export interface IncomingWhatsAppMessage {
   from: string;
   id: string;
   timestamp: string;
-  text: string;
+  type: "text" | "image";
+  text?: string;
+  image?: {
+    mediaId: string;
+    mimeType: string;
+    caption?: string;
+  };
 }
 
 export interface ConversationTurn {

@@ -13,13 +13,11 @@ export function verifyWebhookChallenge(
 }
 
 /**
- * Extrae únicamente mensajes de texto entrantes; ignora eventos de estado
- * (entregado/leído) y otros tipos de mensaje (imagen, audio, etc.) que este
- * bot no maneja todavía.
+ * Extrae mensajes de texto e imagen entrantes; ignora eventos de estado
+ * (entregado/leído) y otros tipos de mensaje (audio, documento, etc.) que
+ * este bot no maneja todavía.
  */
-export function parseIncomingTextMessages(
-  body: unknown,
-): IncomingWhatsAppMessage[] {
+export function parseIncomingMessages(body: unknown): IncomingWhatsAppMessage[] {
   const messages: IncomingWhatsAppMessage[] = [];
 
   const entries = (body as { entry?: unknown[] })?.entry;
@@ -41,18 +39,35 @@ export function parseIncomingTextMessages(
           timestamp?: string;
           type?: string;
           text?: { body?: string };
+          image?: { id?: string; mime_type?: string; caption?: string };
         };
 
-        if (msg.type !== "text" || !msg.text?.body || !msg.from || !msg.id) {
+        if (!msg.from || !msg.id) continue;
+
+        if (msg.type === "text" && msg.text?.body) {
+          messages.push({
+            from: msg.from,
+            id: msg.id,
+            timestamp: msg.timestamp ?? String(Date.now()),
+            type: "text",
+            text: msg.text.body,
+          });
           continue;
         }
 
-        messages.push({
-          from: msg.from,
-          id: msg.id,
-          timestamp: msg.timestamp ?? String(Date.now()),
-          text: msg.text.body,
-        });
+        if (msg.type === "image" && msg.image?.id && msg.image?.mime_type) {
+          messages.push({
+            from: msg.from,
+            id: msg.id,
+            timestamp: msg.timestamp ?? String(Date.now()),
+            type: "image",
+            image: {
+              mediaId: msg.image.id,
+              mimeType: msg.image.mime_type,
+              caption: msg.image.caption,
+            },
+          });
+        }
       }
     }
   }

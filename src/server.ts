@@ -5,12 +5,14 @@ import { loadKnowledgeBase } from "./knowledge/loader";
 import { KnowledgeIndex } from "./knowledge/search";
 import { generateReply } from "./ai/assistant";
 import {
+  downloadMedia,
   markMessageAsRead,
   sendDocumentMessage,
   sendImageMessage,
   sendTextMessage,
 } from "./whatsapp/client";
-import { parseIncomingTextMessages, verifyWebhookChallenge } from "./whatsapp/webhook";
+import { parseIncomingMessages, verifyWebhookChallenge } from "./whatsapp/webhook";
+import type { IncomingWhatsAppMessage } from "./types";
 import { appendTurns, getHistory } from "./session/store";
 import { detectTemplateRequest, TemplateDetection } from "./templates/detector";
 import { isImageTemplate, TEMPLATES } from "./templates/registry";
@@ -47,7 +49,7 @@ app.post("/webhook", (req, res) => {
   // Responder de inmediato: Meta espera un 200 rápido y reintenta si tarda.
   res.sendStatus(200);
 
-  const messages = parseIncomingTextMessages(req.body);
+  const messages = parseIncomingMessages(req.body);
 
   for (const message of messages) {
     if (processedMessageIds.has(message.id)) continue;
@@ -57,22 +59,25 @@ app.post("/webhook", (req, res) => {
       if (oldest) processedMessageIds.delete(oldest);
     }
 
-    handleIncomingMessage(message.from, message.id, message.text).catch(
-      (error) => {
-        console.error(`Error procesando mensaje de ${message.from}:`, error);
-      },
-    );
+    handleIncomingMessage(message).catch((error) => {
+      console.error(`Error procesando mensaje de ${message.from}:`, error);
+    });
   }
 });
 
-async function handleIncomingMessage(
-  from: string,
-  messageId: string,
-  text: string,
-): Promise<void> {
-  await markMessageAsRead(messageId).catch((error) =>
+async function handleIncomingMessage(message: IncomingWhatsAppMessage): Promise<void> {
+  const { from } = message;
+
+  await markMessageAsRead(message.id).catch((error) =>
     console.error("No se pudo marcar el mensaje como leído:", error),
   );
+
+  if (message.type === "image" && message.image) {
+    await handleIncomingImage(from, message.image);
+    return;
+  }
+
+  const text = message.text ?? "";
 
   const templateDetection = detectTemplateRequest(text);
   if (templateDetection) {
@@ -102,6 +107,36 @@ async function handleIncomingMessage(
 
   appendTurns(from, [
     { role: "user", content: text },
+    { role: "assistant", content: reply },
+  ]);
+}
+
+/** Descarga la imagen enviada por el usuario y genera una respuesta basada en su contenido. */
+async function handleIncomingImage(
+  from: string,
+  image: { mediaId: string; mimeType: string; caption?: string },
+): Promise<void> {
+  const caption = image.caption ?? "";
+
+  let media: { base64: string; mimeType: string };
+  try {
+    media = await downloadMedia(image.mediaId);
+  } catch (error) {
+    console.error(`No se pudo descargar la imagen de ${from}:`, error);
+    await sendTextMessage(
+      from,
+      "No pude descargar la imagen que enviaste 😕 Intenta mandarla de nuevo en unos segundos.",
+    );
+    return;
+  }
+
+  const history = getHistory(from);
+  const reply = await generateReply(caption, history, knowledgeIndex, media);
+
+  await sendTextMessage(from, reply);
+
+  appendTurns(from, [
+    { role: "user", content: caption ? `[Imagen] ${caption}` : "[Imagen enviada]" },
     { role: "assistant", content: reply },
   ]);
 }
